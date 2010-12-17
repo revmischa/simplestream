@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Live!</title>
+    </head>
+    <body>
+        <script type='text/javascript' src='swfobject/swfobject.js'></script>
+        <div id='mediaspace'>You need flash!</div>
+
+        <script type='text/javascript'>
+            var flashvars = { 'file': "stream1", 'streamer': 'rtmp://man.in.a.dress.anxietychat.net/flvplayback/' };
+            var params = { 'allowfullscreen':'true', 'allowscriptaccess':'always', 'wmode':'opaque' };
+            var attributes = {};
+
+            swfobject.embedSWF("mediaplayer/player.swf", "mediaspace", "640", "360", "9.0.0","swfobject/expressInstall.swf", flashvars, params, attributes);
+        </script>
+    </body>
+</html>
