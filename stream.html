@@ -1,17 +1,52 @@
 <html>
     <head>
         <title>Live!</title>
+
+        <script type='text/javascript'>
+			var width = "97%";
+			var height = "96%";
+			var streamName = "stream1";
+			var streamServer = "rtmp://man.in.a.dress.anxietychat.net/flvplayback";
+			var useLiveStream = 0; // auto-poll for stream availbility (doesn't work very good)
+
+			var flashvars;
+
+			if (useLiveStream) {
+            	flashvars = {
+					'livestream.file': streamName,
+					'livestream.streamer': streamServer,
+					'livestream.interval': 3,
+					'livestream.message': 'Checking for stream...',
+					'plugins': 'livestream-1'
+				};
+			} else {
+				flashvars = {
+					'file': streamName,
+					'streamer': streamServer,
+					'autostart': 'true'
+				}
+			}
+
+            var params = {
+	 			'allowfullscreen': 'true',
+				'allowscriptaccess': 'always',
+				'wmode': 'opaque'
+			};
+            var attributes = {};
+		</script>
     </head>
     <body>
         <script type='text/javascript' src='swfobject/swfobject.js'></script>
-        <div id='mediaspace'>You need flash!</div>
-
-        <script type='text/javascript'>
-            var flashvars = { 'file': "stream1", 'streamer': 'rtmp://man.in.a.dress.anxietychat.net/flvplayback/' };
-            var params = { 'allowfullscreen':'true', 'allowscriptaccess':'always', 'wmode':'opaque' };
-            var attributes = {};
-
-            swfobject.embedSWF("mediaplayer/player.swf", "mediaspace", "1280", "720", "9.0.0","swfobject/expressInstall.swf", flashvars, params, attributes);
-        </script>
+        <div id='mediaspace'>
+			<video controls>
+        		<source src="segmentedmpeg/live.m3u8"/>
+				<script>
+		            swfobject.embedSWF("mediaplayer/player.swf", "mediaspace", width, height	, "9.0.0","swfobject/expressInstall.swf", flashvars, params, attributes);
+    		    </script>
+				<b>
+					You don't have flash! iOS video playback unsuccessful too. :(
+				</b>
+      		</video>
+		</div>
     </body>
 </html>
